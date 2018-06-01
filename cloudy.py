@@ -19,7 +19,7 @@
 ########################################################################
 
 from dataset import load_cached
-#import download
+import download
 import os
 from PIL import Image
 
@@ -36,7 +36,7 @@ train_dir = os.path.join(data_dir, "train/")
 test_dir = os.path.join(data_dir, "test/")
 
 # URL for the data-set on the internet.
-#data_url = "https://github.com/Hvass-Labs/knifey-spoony/raw/master/knifey-spoony.tar.gz"
+data_url = "https://github.com/Neloh/cloudify/blob/master/data/clouds-images.tar.gz"
 
 ########################################################################
 # Various constants for the size of the images.
@@ -126,7 +126,7 @@ def copy_files():
 
 if __name__ == '__main__':
     # Download and extract the data-set if it doesn't already exist.
-    #maybe_download_and_extract()
+    maybe_download_and_extract()
 
     # Load the data-set.
     dataset = load()
