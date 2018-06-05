@@ -6,14 +6,12 @@
 #
 ########################################################################
 #
-# This file is part of the TensorFlow Tutorials available at:
+# This file is an extract of the TensorFlow Tutorials available at:
 #
-# https://github.com/Hvass-Labs/TensorFlow-Tutorials
-#
-# Published under the MIT License. See the file LICENSE for details.
-#
-# Copyright 2016 by Magnus Erik Hvass Pedersen
-#
+# https://github.com/Hvass-Labs/TensorFlow-Tutorials (by Magnus Erik Hvass Pedersen)
+
+# The author of this file is Sibonelo Ngobese
+# Data Science Intern at Bytes Systems Integration, Gauteng, Midrand 
 ########################################################################
 
 import sys

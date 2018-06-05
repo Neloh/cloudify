@@ -1,21 +1,17 @@
 ########################################################################
 #
 # Class for creating a data-set consisting of all files in a directory.
-#
-# Example usage is shown in the file knifey.py and Tutorial #09.
-#
+
 # Implemented in Python 3.5
 #
 ########################################################################
 #
-# This file is part of the TensorFlow Tutorials available at:
+# This file is an extract of the TensorFlow Tutorials available at:
 #
-# https://github.com/Hvass-Labs/TensorFlow-Tutorials
-#
-# Published under the MIT License. See the file LICENSE for details.
-#
-# Copyright 2016 by Magnus Erik Hvass Pedersen
-#
+# https://github.com/Hvass-Labs/TensorFlow-Tutorials (by Magnus Erik Hvass Pedersen)
+
+# The author of this file is Sibonelo Ngobese
+# Data Science Intern at Bytes Systems Integration, Gauteng, Midrand 
 ########################################################################
 
 import numpy as np
@@ -61,41 +57,45 @@ class DataSet:
         Create a data-set consisting of the filenames in the given directory
         and sub-dirs that match the given filename-extensions.
 
-        For example, the knifey-spoony data-set (see knifey.py) has the
+        For example, the clouds data-set (see cloudy.py) has the
         following dir-structure:
 
-        knifey-spoony/forky/
-        knifey-spoony/knifey/
-        knifey-spoony/spoony/
-        knifey-spoony/forky/test/
-        knifey-spoony/knifey/test/
-        knifey-spoony/spoony/test/
+        clouds-images/cirrus/
+        clouds-images/cumulus/
+        clouds-images/nimbus/
+        clouds-images/stratus/
+        
+        clouds-images/cirrus/test/
+        clouds-images/cumulus/test/
+        clouds-images/nimbus/test/
+        clouds-images/stratus/test/
 
-        This means there are 3 classes called: forky, knifey, and spoony.
+        This means there are 4 classes called: cirrus, cumulus, nimbus and stratus.
 
-        If we set in_dir = "knifey-spoony/" and create a new DataSet-object
+        If we set in_dir = "clouds-images/" and create a new DataSet-object
         then it will scan through these directories and create a training-set
         and test-set for each of these classes.
 
         The training-set will contain a list of all the *.jpg filenames
         in the following directories:
 
-        knifey-spoony/forky/
-        knifey-spoony/knifey/
-        knifey-spoony/spoony/
+        clouds-images/cirrus/
+        clouds-images/cumulus/
+        clouds-images/nimbus/
+        clouds-images/stratus/
 
         The test-set will contain a list of all the *.jpg filenames
         in the following directories:
 
-        knifey-spoony/forky/test/
-        knifey-spoony/knifey/test/
-        knifey-spoony/spoony/test/
+        clouds-images/cirrus/test/
+        clouds-images/cumulus/test/
+        clouds-images/nimbus/test/
+        clouds-images/stratus/test/
 
-        See the TensorFlow Tutorial #09 for a usage example.
 
         :param in_dir:
             Root-dir for the files in the data-set.
-            This would be 'knifey-spoony/' in the example above.
+            This would be 'clouds-images/' in the example above.
 
         :param exts:
             String or tuple of strings with valid filename-extensions.
@@ -263,40 +263,41 @@ class DataSet:
         For example, the normal directory structure for the
         different classes in the training-set is:
 
-        knifey-spoony/forky/
-        knifey-spoony/knifey/
-        knifey-spoony/spoony/
+        clouds-images/cirrus/
+        clouds-images/cumulus/
+        clouds-images/nimbus/
+        clouds-images/stratus/
 
         Normally the test-set is a sub-dir of the training-set:
 
-        knifey-spoony/forky/test/
-        knifey-spoony/knifey/test/
-        knifey-spoony/spoony/test/
+        clouds-images/cirrus/test/
+        clouds-images/cumulus/test/
+        clouds-images/nimbus/test/
+        clouds-images/stratus/test/
 
         But some APIs use another dir-structure for the training-set:
         
-        knifey-spoony/train/forky/
-        knifey-spoony/train/knifey/
-        knifey-spoony/train/spoony/
+        clouds-images/train/cirrus/
+        clouds-images/train/cumulus/
+        clouds-images/train/nimbus/
+        clouds-images/train/stratus/
 
         and for the test-set:
         
-        knifey-spoony/test/forky/
-        knifey-spoony/test/knifey/
-        knifey-spoony/test/spoony/
+        clouds-images/test/cirrus/
+        clouds-images/test/cumulus/
+        clouds-images/test/nimbus/
+        clouds-images/test/stratus/
 
-        :param train_dir: Directory for the training-set e.g. 'knifey-spoony/train/'
-        :param test_dir: Directory for the test-set e.g. 'knifey-spoony/test/'
+        :param train_dir: Directory for the training-set e.g. 'clouds-images/train/'
+        :param test_dir: Directory for the test-set e.g. 'clouds-images/test/'
         :return: Nothing. 
         """
 
         # Helper-function for actually copying the files.
         def _copy_files(src_paths, dst_dir, class_numbers):
 
-            # Create a list of dirs for each class, e.g.:
-            # ['knifey-spoony/test/forky/',
-            #  'knifey-spoony/test/knifey/',
-            #  'knifey-spoony/test/spoony/']
+            # Create a list of dirs for each class:
             class_dirs = [os.path.join(dst_dir, class_name + "/")
                           for class_name in self.class_names]
 
@@ -337,8 +338,7 @@ def load_cached(cache_path, in_dir):
     This is useful if you need to ensure the ordering of the
     filenames is consistent every time you load the data-set,
     for example if you use the DataSet-object in combination
-    with Transfer Values saved to another cache-file, see e.g.
-    Tutorial #09 for an example of this.
+    with Transfer Values saved to another cache-file.
 
     :param cache_path:
         File-path for the cache-file.

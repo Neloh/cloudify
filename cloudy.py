@@ -1,6 +1,6 @@
 ########################################################################
 #
-# Functions for downloading the Knifey-Spoony data-set from the internet
+# Functions for downloading the clouds data-set from the internet
 # and loading it into memory. Note that this only loads the file-names
 # for the images in the data-set and does not load the actual images.
 #
@@ -8,14 +8,12 @@
 #
 ########################################################################
 #
-# This file is part of the TensorFlow Tutorials available at:
+# This file is  an extract of the TensorFlow Tutorials available at:
 #
-# https://github.com/Hvass-Labs/TensorFlow-Tutorials
-#
-# Published under the MIT License. See the file LICENSE for details.
-#
-# Copyright 2016 by Magnus Erik Hvass Pedersen
-#
+# https://github.com/Hvass-Labs/TensorFlow-Tutorials (by Magnus Erik Hvass Pedersen)
+
+# The author of this file is Sibonelo Ngobese
+# Data Science Intern at Bytes Systems Integration, Gauteng, Midrand 
 ########################################################################
 
 from dataset import load_cached
@@ -43,10 +41,7 @@ data_url = "https://github.com/Neloh/cloudify/blob/master/data/clouds-images.tar
 # Use these constants in your own program.
 
 # Width and height of each image.
-img_size = 300
-#if img_
-#im = Image.open('whatever.png')
-#width, height = im.size
+img_size = 224
 
 # Number of channels in each image, 3 channels: Red, Green, Blue.
 num_channels = 3
@@ -58,7 +53,7 @@ img_shape = [img_size, img_size, num_channels]
 img_size_flat = img_size * img_size * num_channels
 
 # Number of classes.
-num_classes = 3
+num_classes = 4
 
 ########################################################################
 # Public functions that you may call to download the data-set from
@@ -67,7 +62,7 @@ num_classes = 3
 
 def maybe_download_and_extract():
     """
-    Download and extract the Knifey-Spoony data-set if it doesn't already exist
+    Download and extract the Clouds data-set if it doesn't already exist
     in data_dir (set this variable first to the desired directory).
     """
 
@@ -76,17 +71,17 @@ def maybe_download_and_extract():
 
 def load():
     """
-    Load the Knifey-Spoony data-set into memory.
+    Load the data-set into memory.
 
     This uses a cache-file which is reloaded if it already exists,
-    otherwise the Knifey-Spoony data-set is created and saved to
+    otherwise the data-set is created and saved to
     the cache-file. The reason for using a cache-file is that it
     ensure the files are ordered consistently each time the data-set
-    is loaded. This is important when the data-set is used in
-    combination with Transfer Learning as is done in Tutorial #09.
-
+    is loaded. 
+    
     :return:
-        A DataSet-object for the Knifey-Spoony data-set.
+        A DataSet-object for the clouds data-set 
+        Only four major cloud types used/considered
     """
 
     # Path for the cache-file.
@@ -114,7 +109,7 @@ def copy_files():
     copies the files to a dir-structure that works with e.g. Keras.
     """
 
-    # Load the Knifey-Spoony dataset.
+    # Load the clouds dataset.
     # This is very fast as it only gathers lists of the files
     # and does not actually load the images into memory.
     dataset = load()
@@ -126,7 +121,7 @@ def copy_files():
 
 if __name__ == '__main__':
     # Download and extract the data-set if it doesn't already exist.
-    maybe_download_and_extract()
+    #maybe_download_and_extract()
 
     # Load the data-set.
     dataset = load()
