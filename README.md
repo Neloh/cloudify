@@ -4,9 +4,7 @@ This script classifies clouds into 4 classes:
 It uses Google's Tensorflow backend and defines the neural network using the Keras API.
 
 It can be ran on Google's Colab machine/server
-thus accessing the GPU or locally with a little bit directory pre-processing
-and sorting. 
-The training set is like 167 and testing set are 40.
+thus accessing the GPU or locally with a little bit directory pre-processing.
 This REPO is still under construction so WATCH your head #debris_falling!
 
 ###### To run this script
